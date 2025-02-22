@@ -1,7 +1,6 @@
 package med.voll.api.informacao;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 /**
  * Endereco
@@ -9,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 public record EnderecoPessoas(
     @NotBlank String logradouro,
 
-    @NotBlank @Pattern(regexp = "\\d{11}") String cep,
+    @NotBlank String cep,
 
     String numero,
 
