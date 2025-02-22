@@ -1,15 +1,11 @@
 package med.voll.api.models;
 
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import med.voll.api.informacao.EnderecoPessoas;
 
 @Embeddable
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Endereco {
 
   private String logradouro;
@@ -30,4 +26,6 @@ public class Endereco {
     this.cidade = endereco.cidade();
   }
 
+  public Endereco() {
+  }
 }
