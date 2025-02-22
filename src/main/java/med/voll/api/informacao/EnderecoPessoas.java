@@ -11,7 +11,7 @@ public record EnderecoPessoas(
 
     @NotBlank @Pattern(regexp = "\\d{11}") String cep,
 
-    @NotBlank @Pattern(regexp = "\\d{9}") String numero,
+    String numero,
 
     String complemento,
 

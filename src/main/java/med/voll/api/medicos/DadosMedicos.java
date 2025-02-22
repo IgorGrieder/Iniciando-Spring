@@ -19,5 +19,7 @@ public record DadosMedicos(
 
     @NotNull Especialidade especialidade,
 
+    @NotBlank @Pattern(regexp = "\\d{9}") String telefone,
+
     @NotNull @Valid EnderecoPessoas endereco) {
 }
