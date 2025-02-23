@@ -3,6 +3,7 @@ package med.voll.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import med.voll.api.medicos.DadosMedicoListagem;
 import med.voll.api.medicos.DadosMedicos;
+import med.voll.api.medicos.MedicoAdicionado;
 import med.voll.api.medicos.MedicoDeletar;
 import med.voll.api.medicos.MedicoModificar;
 import med.voll.api.models.Medico;
@@ -32,25 +34,31 @@ public class MedicoController {
 
   @PostMapping
   @Transactional
-  public void cadastrar(@RequestBody @Valid DadosMedicos dadosMedicos) {
+  public ResponseEntity cadastrar(@RequestBody @Valid DadosMedicos dadosMedicos) {
     repository.save(new Medico(dadosMedicos));
+    return ResponseEntity.ok().build();
   }
 
   @GetMapping
-  public List<DadosMedicoListagem> listar() {
-    return repository.findAll().stream().map(DadosMedicoListagem::new).toList();
+  public ResponseEntity<List<DadosMedicoListagem>> listar() {
+    return ResponseEntity.ok(
+        repository.findAll().stream().map(DadosMedicoListagem::new).toList());
   }
 
   @DeleteMapping
   @Transactional
-  public void deletar(@RequestBody @Valid MedicoDeletar medico) {
+  public ResponseEntity deletar(@RequestBody @Valid MedicoDeletar medico) {
     repository.deleteById(medico.id());
+    return ResponseEntity.ok().build();
   }
 
   @PutMapping
   @Transactional
-  public void alterar(@RequestBody @Valid MedicoModificar medico) {
-    var medicoEncontrado = repository.getReferenceById(medico.id());
-    medicoEncontrado.atualizarInformacoes(medico);
+  public ResponseEntity alterar(@RequestBody @Valid MedicoModificar medico) {
+    var medicoAlterado = repository.getReferenceById(medico.id());
+    medicoAlterado.atualizarInformacoes(medico);
+
+    // Apenas para exercitar irei retornar o novo medico criado
+    return ResponseEntity.ok(new MedicoAdicionado(medicoAlterado));
   }
 }
