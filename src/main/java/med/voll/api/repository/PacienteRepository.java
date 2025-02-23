@@ -8,5 +8,4 @@ import med.voll.api.models.Paciente;
  * PacienteRepository
  */
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
-
 }

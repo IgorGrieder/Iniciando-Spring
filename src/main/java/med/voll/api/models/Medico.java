@@ -47,4 +47,7 @@ public class Medico {
     this.endereco = new Endereco(dadosMedicos.endereco());
     this.telefone = dadosMedicos.telefone();
   }
+
+  public Medico() {
+  }
 }
