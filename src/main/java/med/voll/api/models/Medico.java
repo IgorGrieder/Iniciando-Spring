@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.medicos.DadosMedicos;
 import med.voll.api.medicos.Especialidade;
+import med.voll.api.medicos.MedicoModificar;
 
 /**
  * Medico
@@ -48,5 +49,20 @@ public class Medico {
     this.especialidade = dadosMedicos.especialidade();
     this.endereco = new Endereco(dadosMedicos.endereco());
     this.telefone = dadosMedicos.telefone();
+  }
+
+  public void atualizarInformacoes(MedicoModificar medico) {
+    if (medico.nome() != null) {
+      this.crm = medico.nome();
+    }
+    if (medico.telefone() != null) {
+      this.telefone = medico.telefone();
+    }
+    if (medico.email() != null) {
+      this.email = medico.email();
+    }
+    if (medico.endereco() != null) {
+      this.endereco.atualizarInformacoes(medico.endereco());
+    }
   }
 }
