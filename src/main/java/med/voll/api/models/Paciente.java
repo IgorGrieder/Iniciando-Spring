@@ -18,7 +18,6 @@ import med.voll.api.pacientes.DadosPacientes;
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Paciente {
