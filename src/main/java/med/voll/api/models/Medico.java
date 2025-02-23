@@ -53,7 +53,7 @@ public class Medico {
 
   public void atualizarInformacoes(MedicoModificar medico) {
     if (medico.nome() != null) {
-      this.crm = medico.nome();
+      this.nome = medico.nome();
     }
     if (medico.telefone() != null) {
       this.telefone = medico.telefone();
