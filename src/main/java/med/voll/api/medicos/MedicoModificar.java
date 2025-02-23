@@ -1,11 +1,11 @@
 package med.voll.api.medicos;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import med.voll.api.informacao.EnderecoPessoas;
 
 public record MedicoModificar(
-    @NotBlank Long id,
+    @NotNull Long id,
 
     String nome,
 
