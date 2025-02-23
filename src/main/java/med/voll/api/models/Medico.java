@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import med.voll.api.medicos.DadosMedicos;
 import med.voll.api.medicos.Especialidade;
 
@@ -20,6 +21,7 @@ import med.voll.api.medicos.Especialidade;
 @Table(name = "medicos")
 @Entity(name = "Medico")
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Medico {
@@ -46,8 +48,5 @@ public class Medico {
     this.especialidade = dadosMedicos.especialidade();
     this.endereco = new Endereco(dadosMedicos.endereco());
     this.telefone = dadosMedicos.telefone();
-  }
-
-  public Medico() {
   }
 }

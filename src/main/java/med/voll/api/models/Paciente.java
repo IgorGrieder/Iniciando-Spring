@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import med.voll.api.pacientes.DadosPacientes;
 
 /**
@@ -16,6 +17,7 @@ import med.voll.api.pacientes.DadosPacientes;
  */
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
+@NoArgsConstructor
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -32,9 +34,6 @@ public class Paciente {
 
   @Embedded
   private Endereco endereco;
-
-  public Paciente() {
-  }
 
   public Paciente(DadosPacientes dadosPacientes) {
     this.cpf = dadosPacientes.cpf();
